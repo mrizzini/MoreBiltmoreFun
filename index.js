@@ -27,25 +27,46 @@ var hotel = {
     },
     doubleAvailCheck: function () {
         if (this.doubleBeds - this.doubleBedsBooked < 10) {
-            return ("Book soon! There are less than 10 double rooms available");
+            return ("Book soon! There are only " + (this.doubleBeds - this.doubleBedsBooked) + " available");
         }
         return "There are " + (this.doubleBeds - this.doubleBedsBooked) + " double beds available at " + (this.name); 
     },
     queenAvailCheck: function () {
         if (this.queen - this.queenBooked < 10) {
-            return ("Book soon! There are less than 10 queen rooms available");
+            return ("Book soon! There are only " + (this.queen - this.queenBooked) + " available");
         }
         return "There are " + (this.queen - this.queenBooked) + " queen beds available at " + (this.name);
     },
     kingAvailCheck: function () {
         if (this.king - this.kingBooked < 10) {
-            return ("Book soon! There are less than 10 king rooms available");
+            return ("Book soon! There are only " + (this.king - this.kingBooked) + " available");
         }
         return "There are " + (this.king - this.kingBooked) + " king beds available at " + (this.name);
     }
 };
 
+function doubleBookFunction () {
+    hotel.doubleBedsBooked = hotel.doubleBedsBooked + 1;
+    hotel.booked = hotel.booked + 1;
+    document.getElementById('doubleBook').innerHTML = "Thank you. With your reservation, there are " + (hotel.doubleBeds - hotel.doubleBedsBooked) + " remaining";
+}
 
+function queenBookFunction () {
+    hotel.queenBooked = hotel.queenBooked + 1;
+    hotel.booked = hotel.booked + 1;
+    document.getElementById('queenBook').innerHTML = "Thank you. With your reservation, there are " + (hotel.queen - hotel.queenBooked) + " remaining";
+}
+
+function kingBookFunction () {
+    hotel.kingBooked = hotel.kingBooked + 1;
+    hotel.booked = hotel.booked + 1;
+    document.getElementById('kingBook').innerHTML = "Thank you. With your reservation, there are " + (hotel.king - hotel.kingBooked) + " remaining";
+}
+
+
+// function booking () {
+//     hotel.booked = hotel.booked + 1;
+// }
 
 function hotelName () {
     document.getElementById('name').innerHTML = hotel.name;
